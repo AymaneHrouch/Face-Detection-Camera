@@ -53,7 +53,7 @@ async function myFunction() {
 
 axios({
   method: "get",
-  url: "https://stormy-wave-62951.herokuapp.com/counter.txt",
+  url: "https://stormy-wave-62951.herokuapp.com/count",
 }).then(function (response) {
   console.log(response);
   document.getElementById("number").innerHTML = `${response.data}`;

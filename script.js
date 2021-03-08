@@ -34,21 +34,27 @@ async function myFunction() {
   console.log("pressed!");
   const canvas = faceapi.createCanvasFromMedia(video);
 
-  console.log(canvas.toDataURL());
   var x = document.getElementById("CANVAS");
+  const name = prompt("What should we call you?");
   axios({
     method: "post",
-    url: "http://localhost:2000",
+    url: "/save",
     data: {
       img: canvas.toDataURL(),
+      name: name,
     },
   });
+
+  alert(`You're now registered dear ${name}. See ya!`);
+
   var ctx = x.getContext("2d");
   ctx.fillStyle = "#FF0000";
 }
 
-document.getElementById("get").addEventListener("click", () => {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "localhost:2000");
-  xhr.send();
+axios({
+  method: "get",
+  url: "./counter.txt",
+}).then(function (response) {
+  console.log(response);
+  document.getElementById("number").innerHTML = `You're guest number ${response.data}`;
 });

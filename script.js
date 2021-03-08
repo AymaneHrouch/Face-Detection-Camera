@@ -38,7 +38,7 @@ async function myFunction() {
   const name = prompt("What should we call you?");
   axios({
     method: "post",
-    url: "/save",
+    url: "https://stormy-wave-62951.herokuapp.com/",
     data: {
       img: canvas.toDataURL(),
       name: name,
@@ -53,8 +53,8 @@ async function myFunction() {
 
 axios({
   method: "get",
-  url: "./counter.txt",
+  url: "https://stormy-wave-62951.herokuapp.com/counter.txt",
 }).then(function (response) {
   console.log(response);
-  document.getElementById("number").innerHTML = `You're guest number ${response.data}`;
+  document.getElementById("number").innerHTML = `${response.data}`;
 });
